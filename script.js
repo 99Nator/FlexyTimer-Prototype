@@ -8,6 +8,8 @@ const resetButton = document.getElementById("reset-btn");
 
 const timeInput = document.getElementById("time-input");
 
+const message = document.getElementById("message");
+
 let seconds;
 
 // variable to hold the timer interval
@@ -37,10 +39,20 @@ seconds--;
 }
 
 // function to update the timer display
-function setTimerDisplay(time) {
+function setTimerDisplay(totalSeconds) {
+
+    // 
+    const hours = Math.floor(totalSeconds / 3600); 
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+   // const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+
+    const formattedHours = String(hours).padStart(2, "0");
+    const formattedMinutes = String(minutes).padStart(2, "0");
+    const formattedSeconds = String(seconds).padStart(2, "0");
 
     // update the timer display with the current time
-    timerDisplay.textContent = time;
+    timerDisplay.textContent = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 
 
 }
@@ -88,6 +100,25 @@ setTimerDisplay(seconds);
 isPaused = false;
 });
 
+// helper function to set the message text
+function setMessage(text) {
+    message.textContent = text;
+}
 
+// call for the message to be set 
+setMessage("Please enter a value greater than 0");
 
+// check if the seconds variable is greater than 0 so as to remove the error message 
+// and start the countdown timer
+if (seconds > 0) {
 
+    setMessage("");
+
+    setTimerDisplay(seconds);
+
+    clearInterval(timer);
+
+    timer = setInterval(countDown, 1000);
+
+    isPaused = false;
+}

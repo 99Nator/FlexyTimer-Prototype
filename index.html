@@ -13,29 +13,39 @@
     </header>    
 
     <main>
-        <section id="timer-container">
+        <section id="display-section">
 
             <h2 id="timer-display">00:00:00</h2>
+
+        
+            <p id="status-message">Ready</p>
         </section>
 
-        <label for="time-input">Countdown</label>
-        <input type="number" id="time-input" min="1" max="60">
-        <section id="controls">
+        <section id="settings-section">
+            <h2>Timer Settings</h2>
+
+               <label for="time-input">Work Time (seconds)</label>
+        <input type="number" id="time-input" min="1">
+
+        <label for="rest-input">Rest Time (seconds)</label>
+        <input type="number" id="rest-input" min="0">
+
+        <label for="rounds-input">Rounds</label>
+        <input type="number" id="rounds-input" min="1">
+        </section>
+
+        <section id="controls-section">
+
             <button id="start-btn">Start</button>
+
             <button id="pause-btn">Pause</button>
+
             <button id="reset-btn">Reset</button>
         </section>
 
-        <section id="settings">
-            
-            <h3>Interval Settings</h3>
 
-            <p>Work Time</p>
 
-            <p>Rest Time</p>
-
-            <p>Rounds</p>
-        </section>
+       
     </main>
 
 
